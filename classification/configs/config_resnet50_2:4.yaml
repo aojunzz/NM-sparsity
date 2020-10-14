@@ -2,7 +2,9 @@ TRAIN:
     model: resnetv150
     N: 2
     M: 4
-    workers: 0
+    sparse_optimizer: 1
+
+    workers: 3
     batch_size: 256
     epochs: 120
 
