@@ -1,6 +1,6 @@
 # image classification on ImageNet
 
-Requirements
+# Requirements
 
 * python packages
 * pytorch>=0.4.0
@@ -9,6 +9,6 @@ Requirements
 * pyyaml
 
 
-Training a model from scratch
+# Training a model from scratch
 
 * ./train_val.sh configs/config_resnet50_2:4.yaml
