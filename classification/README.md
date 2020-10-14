@@ -1,4 +1,4 @@
-image classification on ImageNet
+＃ image classification on ImageNet
 
 Requirements
 
@@ -10,4 +10,5 @@ Requirements
 
 
 Training a model from scratch
-./train_val.sh configs/config_resnet50_2:4.yaml
+
+* ./train_val.sh configs/config_resnet50_2:4.yaml
