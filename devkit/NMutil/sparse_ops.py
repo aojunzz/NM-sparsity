@@ -1,4 +1,5 @@
 import torch
+from torch import autograd
 
 
 class Sparse(autograd.Function):
