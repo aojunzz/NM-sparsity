@@ -19,6 +19,8 @@ sys.path.append(osp.abspath(osp.join(__file__, '../../')))
 from devkit.core import (init_dist, broadcast_params, average_gradients, load_state_ckpt, load_state, save_checkpoint, LRScheduler)
 from devkit.dataset.imagenet_dataset import ColorAugmentation, ImagenetDataset
 
+from devkit.ops import sparse_optimizer
+
 
 
 
@@ -56,7 +58,7 @@ def main():
 
     # create model
     print("=> creating model '{}'".format(args.model))
-    model = models.__dict__[args.model](using_moving_average=args.using_moving_average, using_bn=args.using_bn)
+    model = models.__dict__[args.model]()
 
 
     model.cuda()
@@ -65,7 +67,7 @@ def main():
 
     # define loss function (criterion) and optimizer
     criterion = nn.CrossEntropyLoss().cuda()
-    optimizer = torch.optim.SGD(model.parameters(), args.base_lr,
+    optimizer = sparse_optimizer.SGD(model.parameters(), args.base_lr,
                                 momentum=args.momentum,
                                 weight_decay=args.weight_decay)
 
@@ -165,7 +167,7 @@ def train(train_loader, model, criterion, optimizer, lr_scheduler, epoch, writer
         # measure data loading time
         data_time.update(time.time() - end)
         lr_scheduler.update(i, epoch)
-        target = target.cuda(async=True)
+        target = target.cuda(non_blocking=True)
         input_var = torch.autograd.Variable(input.cuda())
         target_var = torch.autograd.Variable(target)
         # compute output
@@ -227,7 +229,7 @@ def validate(val_loader, model, criterion, epoch, writer):
     with torch.no_grad():
         end = time.time()
         for i, (input, target) in enumerate(val_loader):
-            target = target.cuda(async=True)
+            target = target.cuda(non_blocking=True)
             input_var = torch.autograd.Variable(input.cuda(), volatile=True)
             target_var = torch.autograd.Variable(target, volatile=True)
 
