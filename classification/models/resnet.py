@@ -12,7 +12,7 @@ from torch.nn import init
 
 
 
-__all__ = ['ResNetV1', 'resnet18', 'resnetv34', 'resnet50', 'resnet110',
+__all__ = ['ResNetV1', 'resnet18', 'resnet34', 'resnet50', 'resnet110',
            'resnet152']
 
 
@@ -26,8 +26,9 @@ def conv3x3(in_planes, out_planes, stride=1):
 class BasicBlock(nn.Module):
     expansion = 1
 
-    def __init__(self, inplanes, planes, stride=1, downsample=None, using_moving_average=True, using_bn=True,  last_gamma=True):
+    def __init__(self, inplanes, planes, stride=1, downsample=None):
         super(BasicBlock, self).__init__()
+
         self.conv1 = conv3x3(inplanes, planes, stride)
         self.bn1 = nn.BatchNorm2d(planes)
         self.relu = nn.ReLU(inplace=True)
@@ -57,8 +58,9 @@ class BasicBlock(nn.Module):
 class Bottleneck(nn.Module):
     expansion = 4
 
-    def __init__(self, inplanes, planes, stride=1, downsample=None, using_moving_average=True, using_bn=True, last_gamma=True):
+    def __init__(self, inplanes, planes, stride=1, downsample=None):
         super(Bottleneck, self).__init__()
+
         self.conv1 = SparseConv(inplanes, planes, kernel_size=1, bias=False)
         self.bn1 = nn.BatchNorm2d(planes)
         self.conv2 = SparseConv(planes, planes, kernel_size=3, stride=stride,
@@ -94,12 +96,10 @@ class Bottleneck(nn.Module):
 
 class ResNetV1(nn.Module):
 
-    def __init__(self, block, layers, num_classes=1000, using_moving_average=True, using_bn=True, last_gamma=True):
-        self.inplanes = 64
-        self.using_moving_average=using_moving_average
-        self.using_bn = using_bn
-        self.last_gamma = last_gamma
+    def __init__(self, block, layers, num_classes=1000):
         super(ResNetV1, self).__init__()
+
+        self.inplanes = 64
         self.conv1 = SparseConv(3, 64, kernel_size=7, stride=2, padding=3,
                                bias=False)
         self.bn1 = nn.BatchNorm2d(64)
@@ -110,7 +110,6 @@ class ResNetV1(nn.Module):
         self.layer3 = self._make_layer(block, 256, layers[2], stride=2)
         self.layer4 = self._make_layer(block, 512, layers[3], stride=2)
         self.avgpool = nn.AvgPool2d(7, stride=1)
-        self.drouput = nn.Dropout(p=0.5)
         self.fc = nn.Linear(512 * block.expansion, num_classes)
 
         for m in self.modules():
@@ -131,16 +130,15 @@ class ResNetV1(nn.Module):
             )
 
         layers = []
-        layers.append(block(self.inplanes, planes, stride, downsample, using_moving_average=self.using_moving_average,
-                            using_bn=self.using_bn, last_gamma=self.last_gamma))
+        layers.append(block(self.inplanes, planes, stride, downsample))
         self.inplanes = planes * block.expansion
         for i in range(1, blocks):
-            layers.append(block(self.inplanes, planes, using_moving_average=self.using_moving_average,
-                                using_bn=self.using_bn, last_gamma=self.last_gamma))
+            layers.append(block(self.inplanes, planes))
 
         return nn.Sequential(*layers)
 
     def forward(self, x):
+
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
@@ -153,7 +151,6 @@ class ResNetV1(nn.Module):
 
         x = self.avgpool(x)
         x = x.view(x.size(0), -1)
-        #x = self.drouput(x)
         x = self.fc(x)
 
         return x
