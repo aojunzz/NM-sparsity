@@ -38,6 +38,7 @@ class SparseConv(nn.Conv2d):
 
 
     def get_sparse_weights(self):
+
         return Sparse.apply(self.weight)
 
 
