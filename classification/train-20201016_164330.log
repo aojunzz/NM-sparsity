@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "train_imagenet.py", line 15, in <module>
+    import models
+  File "/mnt/lustre/DATAshare/fatiger/sub/NM-sparsity/NM-sparsity/classification/models/__init__.py", line 1, in <module>
+    from .resnet import *
+  File "/mnt/lustre/DATAshare/fatiger/sub/NM-sparsity/NM-sparsity/classification/models/resnet.py", line 6, in <module>
+    from devkit.ops import SyncBatchNorm2d
+  File "/mnt/lustre/DATAshare/fatiger/sub/NM-sparsity/NM-sparsity/devkit/ops/__init__.py", line 2, in <module>
+    from .sparse_ops import SparseConv
+  File "/mnt/lustre/DATAshare/fatiger/sub/NM-sparsity/NM-sparsity/devkit/ops/sparse_ops.py", line 4, in <module>
+    from .utils import _single, _pair
+ModuleNotFoundError: No module named 'devkit.ops.utils'
+Traceback (most recent call last):
+  File "/mnt/lustre/share/spring/conda_envs/miniconda3/envs/r0.3.2/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/mnt/lustre/share/spring/conda_envs/miniconda3/envs/r0.3.2/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/mnt/lustre/share/platform/env/miniconda3.6/envs/pt1.3v1/lib/python3.6/site-packages/torch/distributed/launch.py", line 253, in <module>
+    main()
+  File "/mnt/lustre/share/platform/env/miniconda3.6/envs/pt1.3v1/lib/python3.6/site-packages/torch/distributed/launch.py", line 249, in main
+    cmd=cmd)
+subprocess.CalledProcessError: Command '['/mnt/lustre/share/spring/conda_envs/miniconda3/envs/r0.3.2/bin/python', '-u', 'train_imagenet.py', '--local_rank=0', '--config', './configs/config_resnet50_2:4.yaml']' returned non-zero exit status 1.
+srun: error: SH-IDC1-10-5-38-117: task 0: Exited with exit code 1

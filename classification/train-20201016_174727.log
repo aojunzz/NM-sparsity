@@ -1,0 +1,27 @@
+train_imagenet.py:46: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  config = yaml.load(f)
+Enabled distributed training.
+=> creating model 'resnet50'
+Traceback (most recent call last):
+  File "train_imagenet.py", line 312, in <module>
+    main()
+  File "train_imagenet.py", line 61, in main
+    model = models.__dict__[args.model](N = args.N, M = args.M)
+  File "/mnt/lustre/DATAshare/fatiger/sub/NM-sparsity/NM-sparsity/classification/models/resnet.py", line 172, in resnet50
+    model = ResNetV1(Bottleneck, [3, 4, 6, 3], **kwargs)
+  File "/mnt/lustre/DATAshare/fatiger/sub/NM-sparsity/NM-sparsity/classification/models/resnet.py", line 109, in __init__
+    bias=False, NN=self.NN, MM=self.MM)
+  File "/mnt/lustre/DATAshare/fatiger/sub/NM-sparsity/NM-sparsity/devkit/ops/sparse_ops.py", line 52, in __init__
+    super(SparseConv, self).__init__(in_channels, out_channels, kernel_size, stride, padding, dilation, groups, bias, padding_mode, NN, MM, **kwargs)
+TypeError: __init__() takes from 4 to 10 positional arguments but 12 were given
+Traceback (most recent call last):
+  File "/mnt/lustre/share/spring/conda_envs/miniconda3/envs/r0.3.2/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/mnt/lustre/share/spring/conda_envs/miniconda3/envs/r0.3.2/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/mnt/lustre/share/platform/env/miniconda3.6/envs/pt1.3v1/lib/python3.6/site-packages/torch/distributed/launch.py", line 253, in <module>
+    main()
+  File "/mnt/lustre/share/platform/env/miniconda3.6/envs/pt1.3v1/lib/python3.6/site-packages/torch/distributed/launch.py", line 249, in main
+    cmd=cmd)
+subprocess.CalledProcessError: Command '['/mnt/lustre/share/spring/conda_envs/miniconda3/envs/r0.3.2/bin/python', '-u', 'train_imagenet.py', '--local_rank=0', '--config', './configs/config_resnet50_2:4.yaml']' returned non-zero exit status 1.
+srun: error: SH-IDC1-10-5-38-117: task 0: Exited with exit code 1

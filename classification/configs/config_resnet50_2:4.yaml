@@ -1,11 +1,11 @@
 TRAIN:
-    model: resnetv150
+    model: resnet50
     N: 2
     M: 4
     sparse_optimizer: 1
 
     workers: 3
-    batch_size: 256
+    batch_size: 32
     epochs: 120
 
     lr_mode : cosine
@@ -17,18 +17,15 @@ TRAIN:
     momentum: 0.9
     weight_decay: 0.00005
 
-    using_moving_average : True
-    last_gamma : True
-    using_bn: True
 
     print_freq: 100
     model_dir: checkpoint/resnet50_2:4
 
+    train_root: /mnt/lustre/share/images/train
+    train_source: /mnt/lustre/share/images/meta/train.txt
+    val_root: /mnt/lustre/share/images/val
+    val_source: /mnt/lustre/share/images/meta/val.txt
 
-    train_root: data
-    train_source: data
-    val_root: data
-    val_source: data
 
 
 

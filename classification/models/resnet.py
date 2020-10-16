@@ -3,7 +3,7 @@ import math
 import sys
 import os.path as osp
 sys.path.append(osp.abspath(osp.join(__file__, '../../../')))
-from devkit.ops import SyncBatchNorm2d
+#from devkit.ops import SyncBatchNorm2d
 import torch
 import torch.nn.functional as F
 from torch import autograd
@@ -97,12 +97,16 @@ class Bottleneck(nn.Module):
 
 class ResNetV1(nn.Module):
 
-    def __init__(self, block, layers, num_classes=1000):
+    def __init__(self, block, layers, num_classes=1000, N=2, M=4):
         super(ResNetV1, self).__init__()
+
+
+        self.N = N
+        self.M = M
 
         self.inplanes = 64
         self.conv1 = SparseConv(3, 64, kernel_size=7, stride=2, padding=3,
-                               bias=False)
+                               bias=False, N=self.N, M=self.M)
         self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -117,9 +121,6 @@ class ResNetV1(nn.Module):
             if isinstance(m, SparseConv):
                 n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
                 m.weight.data.normal_(0, math.sqrt(2. / n))
-            # elif isinstance(m, SwitchNorm2d):
-            #     m.weight.data.fill_(1)
-            #     m.bias.data.zero_()
 
     def _make_layer(self, block, planes, blocks, stride=1):
         downsample = None

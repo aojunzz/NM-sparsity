@@ -1,0 +1,16 @@
+usage: train_imagenet.py [-h] [--config CONFIG] [--local_rank LOCAL_RANK]
+                         [--port PORT] [--world-size WORLD_SIZE] [--rank RANK]
+                         [--model_dir MODEL_DIR] [--resume_from RESUME_FROM]
+                         [-e]
+train_imagenet.py: error: argument --config: expected one argument
+Traceback (most recent call last):
+  File "/mnt/lustre/share/spring/conda_envs/miniconda3/envs/r0.3.2/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/mnt/lustre/share/spring/conda_envs/miniconda3/envs/r0.3.2/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/mnt/lustre/share/platform/env/miniconda3.6/envs/pt1.3v1/lib/python3.6/site-packages/torch/distributed/launch.py", line 253, in <module>
+    main()
+  File "/mnt/lustre/share/platform/env/miniconda3.6/envs/pt1.3v1/lib/python3.6/site-packages/torch/distributed/launch.py", line 249, in main
+    cmd=cmd)
+subprocess.CalledProcessError: Command '['/mnt/lustre/share/spring/conda_envs/miniconda3/envs/r0.3.2/bin/python', '-u', 'train_imagenet.py', '--local_rank=0', '--config']' returned non-zero exit status 2.
+srun: error: SH-IDC1-10-5-38-117: task 0: Exited with exit code 1
