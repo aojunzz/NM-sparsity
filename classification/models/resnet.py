@@ -3,16 +3,17 @@ import math
 import sys
 import os.path as osp
 sys.path.append(osp.abspath(osp.join(__file__, '../../../')))
-from devkit.ops import SwitchNorm2d
+from devkit.ops import SyncBatchNorm2d
 import torch
 import torch.nn.functional as F
 from torch import autograd
 from torch.nn.modules.utils import _pair as pair
 from torch.nn import init
+from devkit.ops import SparseConv
 
 
 
-__all__ = ['ResNetV1', 'resnet18', 'resnet34', 'resnet50', 'resnet110',
+__all__ = ['ResNetV1', 'resnet18', 'resnet34', 'resnet50', 'resnet101',
            'resnet152']
 
 
