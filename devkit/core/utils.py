@@ -2,6 +2,7 @@ import torch
 import os
 import shutil
 
+
 def save_checkpoint(model_dir, state, is_best):
     epoch = state['epoch']
     path = os.path.join(model_dir, 'model.pth-' + str(epoch))

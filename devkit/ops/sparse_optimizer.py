@@ -47,25 +47,8 @@ class SGD(Optimizer):
                     continue
                 if getattr(p, "mask") is not None:
                     assert len(p.shape) == 4
-                    print(p.shape)
-                # p_sort = p.clone()
-                # if len(p.shape)==4:
-                #     #p_sort = p.clone()
-                #     length = p_sort.shape[0]*p_sort.shape[1]*p_sort.shape[2]*p_sort.shape[3]
-                #     group_w = int(length/4)
 
-                #     weight_temp = p.detach().abs().reshape(group_w, 4)
-                #     index = torch.argsort(weight_temp, dim=1)[:, :2]
-
-                #     w_b = weight_temp.clone()
-                #     w_b[:] = 1
-                #     w_b = w_b.scatter_(dim=1, index=index, value=0).reshape(p.shape)
-                #     p_sort[w_b==0] = 31*p_sort[w_b==0]
-                # else:
-                #     w_b = p.clone()
-                #     w_b[:] = 1
-                
-                # d_p = p.grad
+                d_p = p.grad
 
                 if weight_decay != 0:
                     d_p = d_p.add(p * p.mask if getattr(p, "mask") is not None else p, alpha=weight_decay)
