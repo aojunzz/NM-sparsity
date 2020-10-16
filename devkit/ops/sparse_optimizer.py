@@ -46,7 +46,7 @@ class SGD(Optimizer):
                 if p.grad is None:
                     continue
                 if getattr(p, "mask", None) is not None:
-                    assert len(p.shape) == 4
+                    assert len(p.shape) == 1
 
                 d_p = p.grad
 
