@@ -19,4 +19,4 @@
 ## Machine Translation
 
 
- [langurage model](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
+ [language model](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
