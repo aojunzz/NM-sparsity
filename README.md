@@ -1,6 +1,5 @@
 # N:M Fine-grained Structured Sparse Neural Networks
 
-the devkit 
 
 
 ## Image Classification on ImageNet 
@@ -11,8 +10,13 @@ the devkit
 ## Objection Detection on COCO
 
 
+ [detection](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/detection) 
 
 ## Instance Segmentation on COCO
 
+ [segmentation](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
 
 ## Machine Translation
+
+
+ [langurage model](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
