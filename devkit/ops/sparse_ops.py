@@ -36,7 +36,7 @@ class Sparse(autograd.Function):
         w_b = torch.ones(weight_temp.shape, device=weight_temp.device)
         w_b = w_b.scatter_(dim=1, index=index, value=0).reshape(weight.shape)
 
-        return weight*w_b, w_b
+        return output*w_b, w_b
 
 
     @staticmethod
@@ -62,9 +62,8 @@ class SparseConv(nn.Conv2d):
 
         w, mask = self.get_sparse_weights()
         setattr(self.weight, "mask", mask)
-
         x = F.conv2d(
-            x, w, self.bias, self.stride, self.padding, self.dilation, self.groups
+            x, self.weight, self.bias, self.stride, self.padding, self.dilation, self.groups
         )
         return x
 

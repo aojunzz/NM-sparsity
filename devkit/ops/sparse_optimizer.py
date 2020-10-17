@@ -5,7 +5,7 @@ import pdb
 class SGD(Optimizer):
 
     def __init__(self, params, lr=required, momentum=0, dampening=0,
-                 weight_decay=0, nesterov=False):
+                 weight_decay=0, nesterov=False, lammda_w = 5):
         if lr is not required and lr < 0.0:
             raise ValueError("Invalid learning rate: {}".format(lr))
         if momentum < 0.0:
@@ -45,13 +45,14 @@ class SGD(Optimizer):
             for p in group['params']:
                 if p.grad is None:
                     continue
-                if getattr(p, "mask", None) is not None:
-                    assert len(p.shape) == 1
+                #if getattr(p, "mask", None) is not None:
+                #    assert len(p.shape) == 1
 
                 d_p = p.grad
 
-                if weight_decay != 0:
-                    d_p = d_p.add(p * p.mask if getattr(p, "mask", None) is not None else p, alpha=weight_decay)
+                #if weight_decay != 0:
+                d_p = d_p.add(p * p.mask if getattr(p, "mask", None) is not None else p, alpha=weight_decay)
+                d_p = d_p.add(p * (1-p.mask) if getattr(p, "mask", None) is not None else p, alpha=weight_decay*5.0)
                 if momentum != 0:
                     param_state = self.state[p]
                     if 'momentum_buffer' not in param_state:
