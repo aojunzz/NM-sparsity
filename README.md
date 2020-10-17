@@ -1,4 +1,4 @@
-# Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch
+# N:M Fine-grained Structured Sparse Neural Networks
 
 
 ## Image Classification on ImageNet 
