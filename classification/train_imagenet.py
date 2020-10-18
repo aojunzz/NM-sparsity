@@ -20,6 +20,7 @@ from devkit.core import (init_dist, broadcast_params, average_gradients, load_st
 from devkit.dataset.imagenet_dataset import ColorAugmentation, ImagenetDataset
 
 from devkit.ops import sparse_optimizer
+from memcached_dataset import McDataset
 
 
 
@@ -58,7 +59,7 @@ def main():
 
     # create model
     print("=> creating model '{}'".format(args.model))
-    model = models.__dict__[args.model](N = args.N, M = args.M)
+    model = models.__dict__[args.model]()
 
 
     model.cuda()
@@ -90,7 +91,7 @@ def main():
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                      std=[0.229, 0.224, 0.225])
 
-    train_dataset = ImagenetDataset(
+    train_dataset = McDataset(
         args.train_root,
         args.train_source,
         transforms.Compose([
@@ -100,7 +101,7 @@ def main():
             ColorAugmentation(),
             normalize,
         ]))
-    val_dataset = ImagenetDataset(
+    val_dataset = McDataset(
         args.val_root,
         args.val_source,
         transforms.Compose([
@@ -156,6 +157,7 @@ def train(train_loader, model, criterion, optimizer, lr_scheduler, epoch, writer
     losses = AverageMeter()
     top1 = AverageMeter()
     top5 = AverageMeter()
+    SAD = AverageMeter()
 
     # switch to train mode
     model.train()
