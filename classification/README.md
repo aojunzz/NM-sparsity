@@ -17,5 +17,5 @@
 
 |     Model    | Sparse Pattern |    Top1 |         Top5  |   Download |
 | ------------ | --- | ---------------|----------|------ |
-| ResNet50 |  Dense | 77.3 |--|--|
+| ResNet50 |  Dense | 77.3 |--|Google Drive|
 | ResNet50 |  2:4 | 77.1 |--|--|
