@@ -12,3 +12,5 @@
 # Training a model from scratch
 
 * ./train_val.sh configs/config_resnet50_2:4.yaml
+
+# Results and Model Zoo
