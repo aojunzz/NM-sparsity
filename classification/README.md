@@ -15,7 +15,7 @@
 
 # Results and Model Zoo
 
-|     Model    | Top1 |             Top5                |
-| ------------ | --- | ------------------------------- |
-| ResNet50 |  12 | -- |
-| ResNet50     |  32 | -- |
+|     Model    | Sparse Pattern |    Top1 |         Top5  |   Download |
+| ------------ | --- | ---------------|----------|------ |
+| ResNet50 |  Dense | 77.3 |--|--|
+| ResNet50 |  2:4 | 77.1 |--|--|
