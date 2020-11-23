@@ -9,7 +9,7 @@ import torch.nn.functional as F
 from torch import autograd
 from torch.nn.modules.utils import _pair as pair
 from torch.nn import init
-from devkit.ops import SparseConv
+from devkit.sparse_ops import SparseConv
 
 
 

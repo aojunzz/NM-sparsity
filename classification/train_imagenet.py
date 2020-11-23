@@ -20,7 +20,6 @@ from devkit.core import (init_dist, broadcast_params, average_gradients, load_st
 from devkit.dataset.imagenet_dataset import ColorAugmentation, ImagenetDataset
 
 from devkit.sparse_ops import sparse_optimizer
-from memcached_dataset import McDataset
 
 
 
@@ -91,7 +90,7 @@ def main():
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                      std=[0.229, 0.224, 0.225])
 
-    train_dataset = McDataset(
+    train_dataset = ImagenetDataset(
         args.train_root,
         args.train_source,
         transforms.Compose([
@@ -101,7 +100,7 @@ def main():
             ColorAugmentation(),
             normalize,
         ]))
-    val_dataset = McDataset(
+    val_dataset = ImagenetDataset(
         args.val_root,
         args.val_source,
         transforms.Compose([
