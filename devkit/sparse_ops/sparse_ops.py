@@ -67,8 +67,12 @@ class SparseConv(nn.Conv2d):
         )
         return x
 
-#class SparseLinear(nn.Linear):
-#    def __init__():
+class SparseLinear(nn.Linear):
+    def __init__():
+
+        self.N = N
+        self.M = M
+
     
 
     
