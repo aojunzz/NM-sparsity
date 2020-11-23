@@ -18,7 +18,6 @@ sys.path.append(osp.abspath(osp.join(__file__, '../')))
 
 from devkit.core import (init_dist, broadcast_params, average_gradients, load_state_ckpt, load_state, save_checkpoint, LRScheduler)
 from devkit.dataset.imagenet_dataset import ColorAugmentation, ImagenetDataset
-
 from devkit.sparse_ops import sparse_optimizer
 
 
