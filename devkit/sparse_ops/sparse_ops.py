@@ -63,7 +63,7 @@ class SparseConv(nn.Conv2d):
         w, mask = self.get_sparse_weights()
         setattr(self.weight, "mask", mask)
         x = F.conv2d(
-            x, self.weight, self.bias, self.stride, self.padding, self.dilation, self.groups
+            x, w, self.bias, self.stride, self.padding, self.dilation, self.groups
         )
         return x
 
