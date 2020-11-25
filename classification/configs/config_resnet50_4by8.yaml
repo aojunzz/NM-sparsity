@@ -5,7 +5,7 @@ TRAIN:
     sparse_optimizer: 1
 
     workers: 3
-    batch_size: 32
+    batch_size: 256
     epochs: 120
 
     lr_mode : cosine
@@ -19,7 +19,7 @@ TRAIN:
 
 
     print_freq: 100
-    model_dir: checkpoint/resnet50_4:8
+    model_dir: checkpoint/resnet50_4by8
 
     train_root: /mnt/lustre/share/images/train
     train_source: /mnt/lustre/share/images/meta/train.txt

@@ -5,7 +5,7 @@ TRAIN:
     sparse_optimizer: 1
 
     workers: 3
-    batch_size: 32
+    batch_size: 256
     epochs: 120
 
     lr_mode : cosine
