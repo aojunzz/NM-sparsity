@@ -19,7 +19,7 @@ TRAIN:
 
 
     print_freq: 100
-    model_dir: checkpoint/resnet50_2:4
+    model_dir: checkpoint/resnet50_2by4
 
     train_root: /mnt/lustre/share/images/train
     train_source: /mnt/lustre/share/images/meta/train.txt
