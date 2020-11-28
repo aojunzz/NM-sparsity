@@ -51,8 +51,12 @@ class SGD(Optimizer):
                 d_p = p.grad
 
                 #if weight_decay != 0:
-                d_p = d_p.add(p * p.mask if getattr(p, "mask", None) is not None else p, alpha=weight_decay)
-                d_p = d_p.add(p * (1-p.mask) if getattr(p, "mask", None) is not None else p, alpha=weight_decay*5.0)
+                if len(p.shape) == 4:
+                    d_p = d_p.add(p * p.mask if getattr(p, "mask", None) is not None else p, alpha=weight_decay)
+                    d_p = d_p.add(p * (1-p.mask) if getattr(p, "mask", None) is not None else p, alpha=weight_decay*1)
+                else:
+                    d_p = d_p.add(p, alpha=weight_decay)
+
                 if momentum != 0:
                     param_state = self.state[p]
                     if 'momentum_buffer' not in param_state:
