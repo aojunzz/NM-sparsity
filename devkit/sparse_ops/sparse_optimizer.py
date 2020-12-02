@@ -53,7 +53,7 @@ class SGD(Optimizer):
                 #if weight_decay != 0:
                 if len(p.shape) == 4:
                     d_p = d_p.add(p * p.mask if getattr(p, "mask", None) is not None else p, alpha=weight_decay)
-                    d_p = d_p.add(p * (1-p.mask) if getattr(p, "mask", None) is not None else p, alpha=weight_decay*1)
+                    d_p = d_p.add(p * (1-p.mask) if getattr(p, "mask", None) is not None else p, alpha=weight_decay*5)
                 else:
                     d_p = d_p.add(p, alpha=weight_decay)
 
