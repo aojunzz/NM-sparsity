@@ -1,0 +1,33 @@
+TRAIN:
+    model: resnet50
+
+    workers: 3
+    batch_size: 256
+    epochs: 120
+
+    lr_mode : cosine
+    base_lr: 0.1
+    warmup_epochs: 5
+    warmup_lr: 0.0
+    targetlr : 0.0
+
+    momentum: 0.9
+    weight_decay: 0.00005
+
+    using_moving_average : True
+    last_gamma : True
+    using_bn: True
+
+    print_freq: 100
+    model_dir: checkpoint/resnet50_2:4
+
+
+    train_root: data
+    train_source: data
+    val_root: data
+    val_source: data
+
+
+
+TEST:
+    checkpoint_path : data/pretrained_model/
