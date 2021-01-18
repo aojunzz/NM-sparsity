@@ -1,28 +1,38 @@
 # N:M Fine-grained Structured Sparse Neural Networks
 
+N:M sparsity is fine-grained structured network, which can maintain the advantages of both unstructured fine-grained sparsity and structured coarse-grained sparsity si-multaneously.
 
+## Key features:
 
-## Image Classification on ImageNet 
+   N:M sparsity.
+
+   SR-STE.
+
+   
+
+   
+
+### Image Classification on ImageNet 
 
  [classification](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
 
 
-## Objection Detection on COCO
+### Objection Detection on COCO
 
 
  [detection](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/detection) 
 
-## Instance Segmentation on COCO
+### Instance Segmentation on COCO
 
  [segmentation](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
 
-## Machine Translation
+### Machine Translation
 
 
  [language model](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
 
 
-## Citing 
+### Citing 
 
 If you find NM-sparsity and SR-STE useful in your research, please consider citing:
 
