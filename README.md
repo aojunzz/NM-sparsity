@@ -12,27 +12,27 @@ N:M sparsity is fine-grained structured network, which can maintain the advantag
 
    
 
-### Image Classification on ImageNet 
+#### Image Classification on ImageNet 
 
  [classification](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
 
 
-### Objection Detection on COCO
+#### Objection Detection on COCO
 
 
  [detection](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/detection) 
 
-### Instance Segmentation on COCO
+#### Instance Segmentation on COCO
 
  [segmentation](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
 
-### Machine Translation
+#### Machine Translation
 
 
  [language model](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
 
 
-### Citing 
+#### Citing 
 
 If you find NM-sparsity and SR-STE useful in your research, please consider citing:
 
