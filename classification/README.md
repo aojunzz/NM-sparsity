@@ -19,7 +19,11 @@
 | ------------ | --- | ---------------|----------|------ |
 | ResNet50 |  Dense | 77.3 |--|[Google Drive](https://drive.google.com/file/d/1TUvQg4-Y8RdEyTbiuojLWEH64xLLPszG/view?usp=sharing)|
 | ResNet50 |  2:4 | 77.0 |--|[Google Drive](https://drive.google.com/file/d/1zARmlZDI_JWKEteEwNIjcZBGVEiEvWLc/view?usp=sharing)|
+<<<<<<< HEAD
 | ResNet50 |  1:4 | 75.9 |--|[Google Drive](https://drive.google.com/file/d/1TUvQg4-Y8RdEyTbiuojLWEH64xLLPszG/view?usp=sharing)|
+=======
+| ResNet50 |  1:4 | 75.9 |--|[Google Drive](https://drive.google.com/file/d/1zARmlZDI_JWKEteEwNIjcZBGVEiEvWLc/view?usp=sharing)|
+>>>>>>> 9894b8d0097d98b2ce6febd631d9c154410cd136
 | ResNet50 |  2:8 | 76.4 |--|[Google Drive](https://drive.google.com/file/d/1zARmlZDI_JWKEteEwNIjcZBGVEiEvWLc/view?usp=sharing)|
 | ResNet50 |  4:8 | 77.4 |--|[Google Drive](https://drive.google.com/file/d/1TUvQg4-Y8RdEyTbiuojLWEH64xLLPszG/view?usp=sharing)|
 | ResNet18 |  Dense | 71.3 |--|[Google Drive](https://drive.google.com/file/d/1zARmlZDI_JWKEteEwNIjcZBGVEiEvWLc/view?usp=sharing)|
