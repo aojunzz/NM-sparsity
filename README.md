@@ -1,9 +1,5 @@
 # N:M Fine-grained Structured Sparse Neural Networks
 
-<<<<<<< HEAD
-=======
-N:M fine-grained sturctured sparsity is 
->>>>>>> 9894b8d0097d98b2ce6febd631d9c154410cd136
 
 
 ## Image Classification on ImageNet 
@@ -24,13 +20,15 @@ N:M fine-grained sturctured sparsity is
 
 
  [language model](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
-<<<<<<< HEAD
-=======
- 
- @article{NM-sparsity,
-  title={Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch},
-  author={Aojun Zhou and Hongsheng Li},
-  journal={International Conference on Learning Representation (ICLR)},
-  year={2021}
-}
->>>>>>> 9894b8d0097d98b2ce6febd631d9c154410cd136
+
+
+## Citing 
+
+If you find NM-sparsity and SR-STE useful in your research, please consider citing:
+
+        @inproceedings{zhou2021,
+        title={Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch},
+        author={Aojun Zhou, Yukun Ma, Junnan Zhu, Jianbo Liu, Zhijie Zhang, Kun Yuan, Wenxiu Sun, Hongsheng Li},
+        booktitle={International Conference on Learning Representation},
+        year={2021},
+        }
