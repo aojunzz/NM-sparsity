@@ -19,7 +19,6 @@ sys.path.append(osp.abspath(osp.join(__file__, '../')))
 from devkit.core import (init_dist, broadcast_params, average_gradients, load_state_ckpt, load_state, save_checkpoint, LRScheduler)
 from devkit.dataset.imagenet_dataset import ColorAugmentation, ImagenetDataset
 
-from devkit.sparse_ops import sparse_optimizer
 
 
 
@@ -67,7 +66,7 @@ def main():
 
     # define loss function (criterion) and optimizer
     criterion = nn.CrossEntropyLoss().cuda()
-    optimizer = sparse_optimizer.SGD(model.parameters(), args.base_lr,
+    optimizer = torch.optim.SGD(model.parameters(), args.base_lr,
                                 momentum=args.momentum,
                                 weight_decay=args.weight_decay)
 
