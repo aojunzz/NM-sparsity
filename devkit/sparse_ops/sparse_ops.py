@@ -6,25 +6,12 @@ from itertools import repeat
 from torch._six import container_abcs
 
 
-def _ntuple(n):
-    def parse(x):
-        if isinstance(x, container_abcs.Iterable):
-            return x
-        return tuple(repeat(x, n))
-    return parse
-
-_single = _ntuple(1)
-_pair = _ntuple(2)
-_triple = _ntuple(3)
-_quadruple = _ntuple(4)
-
-
-
-class Sparse(autograd.Function):
-    """" Prune the unimprotant edges for the forwards phase but pass the gradient to dense weight using STE in the backwards phase"""
+iclass Sparse(autograd.Function):
+    """" Prune the unimprotant weight for the forwards phase but pass the gradient to dense weight using SR-STE in the backwards phase"""
 
     @staticmethod
-    def forward(ctx, weight, N, M):
+    def forward(ctx, weight, N, M, decay = 0.0002):
+        ctx.save_for_backward(weight)
 
         output = weight.clone()
         length = weight.numel()
@@ -35,17 +22,22 @@ class Sparse(autograd.Function):
 
         w_b = torch.ones(weight_temp.shape, device=weight_temp.device)
         w_b = w_b.scatter_(dim=1, index=index, value=0).reshape(weight.shape)
+        ctx.mask = w_b
+        ctx.decay = decay
 
-        return output*w_b, w_b
+        return output*w_b
 
 
     @staticmethod
-    def backward(ctx, grad_output, _):
-        return grad_output, None, None
+    def backward(ctx, grad_output):
+
+        weight, = ctx.saved_tensors
+        return grad_output + ctx.decay * (1-ctx.mask) * weight, None, None
+
 
 class SparseConv(nn.Conv2d):
+   """" implement N:M sparse convolution layer """
     
-
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros', N=2, M=4, **kwargs):
         self.N = N
         self.M = M
@@ -60,12 +52,13 @@ class SparseConv(nn.Conv2d):
 
     def forward(self, x):
 
-        w, mask = self.get_sparse_weights()
-        setattr(self.weight, "mask", mask)
+        w = self.get_sparse_weights()
         x = F.conv2d(
             x, w, self.bias, self.stride, self.padding, self.dilation, self.groups
         )
         return x
+
+
 
 class SparseLinear(nn.Linear):
     def __init__():
