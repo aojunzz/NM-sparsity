@@ -6,7 +6,7 @@ from itertools import repeat
 from torch._six import container_abcs
 
 
-iclass Sparse(autograd.Function):
+class Sparse(autograd.Function):
     """" Prune the unimprotant weight for the forwards phase but pass the gradient to dense weight using SR-STE in the backwards phase"""
 
     @staticmethod
@@ -61,10 +61,25 @@ class SparseConv(nn.Conv2d):
 
 
 class SparseLinear(nn.Linear):
-    def __init__():
 
+    def __init__(self, in_features: int, out_features: int, bias: bool = True, N=2, M=2, decay = 0.0002, **kwargs):
         self.N = N
         self.M = M
+        super(SparseLinear, self).__init__(in_features, out_features, bias = True)
+
+
+    def get_sparse_weights(self):
+
+        return Sparse.apply(self.weight, self.N, self.M)
+
+
+
+    def forward(self, x):
+
+        w = self.get_sparse_weights()
+        x = F.linear(x, w)
+        return x
+
 
     
 
