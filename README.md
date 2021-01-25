@@ -13,7 +13,12 @@ For hardware acceleration, you can see the following resources:
 
 
 
-SR-STE is a variant of Straight-through Estimator(STE) that can gloablly train N:M sparse networks.  
+SR-STE is a variant of Straight-through Estimator(STE) that can gloablly train N:M sparse networks. SR-STE code as follows:
+
+    ```python
+    #!/usr/bin/env python3
+    print("Hello, World!");
+    ```  
 
    
 
