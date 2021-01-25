@@ -12,13 +12,8 @@ For hardware acceleration, you can see the following resources:
 
 
 
-## Key features:
 
-   N:M sparsity.
-
-   SR-STE.
-
-   
+SR-STE is a variant of Straight-through Estimator(STE) that can gloablly train N:M sparse networks.  
 
    
 
