@@ -36,7 +36,7 @@ class Sparse(autograd.Function):
 
 
 class SparseConv(nn.Conv2d):
-   """" implement N:M sparse convolution layer """
+    """" implement N:M sparse convolution layer """
     
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros', N=2, M=4, **kwargs):
         self.N = N
