@@ -16,12 +16,22 @@ For hardware acceleration, you can see the following resources:
 
 SR-STE can achieve **comparable or even better** results with **negligible extra training cost** and **only a single easy-to-tune hyperparameter $\lambda_w$** than original dense models.
 
-    ```python
-    #!/usr/bin/env python3
-    print("Hello, World!");
-    ```  
 
-   
+```python
+def forward(ctx, weight, N=4, M=2):
+    output = weight.clone()
+    length = weight.numel()
+    group = int(length/M)
+    weight_temp = weight.detach().abs().reshape(group, M)
+    index = torch.argsort(weight_temp, dim=1)[:, :int(M-N)]
+    
+    # compute the mask ($epsilon_t$ in the paper)
+    mask = torch.ones(weight_temp.shape, device=weight_temp.device)
+    mask = mask.scatter_(dim=1, index=index, value=0).reshape(weight.shape)
+
+    return output*mask, mask
+```
+
 
 #### Image Classification on ImageNet 
 
