@@ -12,8 +12,9 @@ For hardware acceleration, you can see the following resources:
 
 
 
+## Method
 
-SR-STE is a variant of Straight-through Estimator(STE) that can gloablly train N:M sparse networks. SR-STE code as follows:
+SR-STE can achieve **comparable or even better** results with **negligible extra training cost** and **only a single easy-to-tune hyperparameter $\lambda_w$** than original dense models.
 
     ```python
     #!/usr/bin/env python3
