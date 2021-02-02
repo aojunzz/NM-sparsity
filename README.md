@@ -18,18 +18,35 @@ SR-STE can achieve **comparable or even better** results with **negligible extra
 
 
 ```python
-def forward(ctx, weight, N=4, M=2):
-    output = weight.clone()
-    length = weight.numel()
-    group = int(length/M)
-    weight_temp = weight.detach().abs().reshape(group, M)
-    index = torch.argsort(weight_temp, dim=1)[:, :int(M-N)]
-    
-    # compute the mask ($epsilon_t$ in the paper)
-    mask = torch.ones(weight_temp.shape, device=weight_temp.device)
-    mask = mask.scatter_(dim=1, index=index, value=0).reshape(weight.shape)
 
-    return output*mask, mask
+class Sparse(autograd.Function):
+    """" Prune the unimprotant weight for the forwards phase but pass the gradient to dense weight using SR-STE in the backwards phase"""
+
+    @staticmethod
+    def forward(ctx, weight, N, M, decay = 0.0002):
+        ctx.save_for_backward(weight)
+
+        output = weight.clone()
+        length = weight.numel()
+        group = int(length/M)
+
+        weight_temp = weight.detach().abs().reshape(group, M)
+        index = torch.argsort(weight_temp, dim=1)[:, :int(M-N)]
+
+        w_b = torch.ones(weight_temp.shape, device=weight_temp.device)
+        w_b = w_b.scatter_(dim=1, index=index, value=0).reshape(weight.shape)
+        ctx.mask = w_b
+        ctx.decay = decay
+
+        return output*w_b
+
+
+    @staticmethod
+    def backward(ctx, grad_output):
+
+        weight, = ctx.saved_tensors
+        return grad_output + ctx.decay * (1-ctx.mask) * weight, None, None
+
 ```
 
 
