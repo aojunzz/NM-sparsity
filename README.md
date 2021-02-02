@@ -2,7 +2,16 @@
 
 ## Why N:M sparsity?
 
+Sparse is divided into structured sparsity and unstructured sparsity. Among them, unstructured sparseness can remove network parameters at any position, which is called fine-grained sparsity. Unstructured sparseness can often achieve a higher sparsity ratio and maintain the accuracy of the model, but it is difficult to achieve The acceleration effect is achieved in application scenarios.
+
 N:M sparsity is fine-grained structured network, which can maintain the advantages of both unstructured fine-grained sparsity and structured coarse-grained sparsity simultaneously.
+
+Thus, latest NVIDIA Ampere design for 2:4 sparsity, this paper discuss a more general form of N:M sparse networks.
+
+
+![alt text](NM.png)
+
+
 
 For hardware acceleration, you can see the following resources:
 
@@ -17,6 +26,8 @@ For hardware acceleration, you can see the following resources:
 ## Method
 
 SR-STE can achieve **comparable or even better** results with **negligible extra training cost** and **only a single easy-to-tune hyperparameter $\lambda_w$** than original dense models.
+
+![alt text](sr-ste.png)
 
 
 ```python
