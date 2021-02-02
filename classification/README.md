@@ -22,7 +22,6 @@
 | ResNet50 |  1:4 | 75.9 |--|[Google Drive](https://drive.google.com/file/d/1zARmlZDI_JWKEteEwNIjcZBGVEiEvWLc/view?usp=sharing)|
 | ResNet50 |  2:8 | 76.4 |--|[Google Drive](https://drive.google.com/file/d/1zARmlZDI_JWKEteEwNIjcZBGVEiEvWLc/view?usp=sharing)|
 | ResNet50 |  4:8 | 77.4 |--|[Google Drive](https://drive.google.com/file/d/1TUvQg4-Y8RdEyTbiuojLWEH64xLLPszG/view?usp=sharing)|
-| ResNet18 |  Dense | 71.3 |--|[Google Drive](https://drive.google.com/file/d/1zARmlZDI_JWKEteEwNIjcZBGVEiEvWLc/view?usp=sharing)|
 | ResNet18 |  2:4 | 71.2 |--|[Google Drive](https://drive.google.com/file/d/1zARmlZDI_JWKEteEwNIjcZBGVEiEvWLc/view?usp=sharing)|
 
 
