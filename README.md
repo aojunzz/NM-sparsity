@@ -2,7 +2,7 @@
 
 ## Why N:M sparsity?
 
-Sparse is divided into structured sparsity and unstructured sparsity. Among them, unstructured sparseness can remove network parameters at any position, which is called fine-grained sparsity. Unstructured sparseness can often achieve a higher sparsity ratio and maintain the accuracy of the model, but it is difficult to achieve The acceleration effect is achieved in application scenarios.
+Sparse Networks is divided into structured sparsity and unstructured sparsity. Among them, unstructured sparseness can remove network parameters at any position, which is called fine-grained sparsity. Unstructured sparseness can often achieve a higher sparsity ratio and maintain the accuracy of the model, but it is difficult to achieve The acceleration effect is achieved in application scenarios.
 
 N:M sparsity is fine-grained structured network, which can maintain the advantages of both unstructured fine-grained sparsity and structured coarse-grained sparsity simultaneously.
 
@@ -29,6 +29,8 @@ SR-STE can achieve **comparable or even better** results with **negligible extra
 
 ![alt text](sr-ste.png)
 
+
+the implementation details are shown as follows(in https://github.com/NM-sparsity/NM-sparsity/blob/main/devkit/sparse_ops/sparse_ops.py):
 
 ```python
 
