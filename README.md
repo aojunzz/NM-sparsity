@@ -1,5 +1,7 @@
 # N:M Fine-grained Structured Sparse Neural Networks
 
+## Why N:M sparsity?
+
 N:M sparsity is fine-grained structured network, which can maintain the advantages of both unstructured fine-grained sparsity and structured coarse-grained sparsity simultaneously.
 
 For hardware acceleration, you can see the following resources:
