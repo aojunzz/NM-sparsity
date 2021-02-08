@@ -57,7 +57,7 @@ def main():
 
     # create model
     print("=> creating model '{}'".format(args.model))
-    model = models.__dict__[args.model]()
+    model = models.__dict__[args.model](N = args.N, M = args.M)
 
 
     model.cuda()
