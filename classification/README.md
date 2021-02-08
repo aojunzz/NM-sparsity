@@ -11,7 +11,7 @@
 
 # Training a model from scratch
 
-* ./train_val.sh configs/config_resnet50_2:4.yaml
+* ./train_val.sh ./configs/config_resnet50_2:4.yaml
 
 # Results and Model Zoo
 
@@ -32,7 +32,7 @@ If you find NM-sparsity and SR-STE useful in your research, please consider citi
         @inproceedings{zhou2021,
         title={Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch},
         author={Aojun Zhou, Yukun Ma, Junnan Zhu, Jianbo Liu, Zhijie Zhang, Kun Yuan, Wenxiu Sun, Hongsheng Li},
-        booktitle={International Conference on Learning Representation},
+        booktitle={International Conference on Learning Representations},
         year={2021},
         }
 
