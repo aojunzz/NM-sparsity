@@ -9,12 +9,10 @@ individual weights distributed across the neural network, and structured coarse-
 grained sparsity which prunes blocks of sub-networks of a neural network. Fine-
 grained sparsity can achieve a high compression ratio but is not hardware friendly
 and hence receives limited speed gains. On the other hand, coarse-grained sparsity
-cannot concurrently achieve both apparent acceleration on modern GPUs and de-
-cent performance.
+cannot concurrently achieve both apparent acceleration on modern GPUs and decent performance.
 
 N:M fine-grained structured sparse network, which can maintain the advantages of
-both unstructured fine-grained sparsity and structured coarse-grained sparsity si-
-multaneously on specifically designed GPUs.
+both unstructured fine-grained sparsity and structured coarse-grained sparsity simultaneously on specifically designed GPUs.
 
 Latest NVIDIA Ampere design for 2:4 sparsity, this paper discuss a more general form of N:M sparse networks.
 
