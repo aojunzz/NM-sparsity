@@ -2,11 +2,21 @@
 
 ## Why N:M sparsity?
 
-Sparse Networks is divided into structured sparsity and unstructured sparsity. Unstructured sparsity can remove network parameters at any position, which is called fine-grained sparsity. Unstructured sparseness can often achieve a higher sparsity ratio and maintain the accuracy of the model, but it is difficult to achieve speedup.
+Sparsity in Deep Neural Networks (DNNs) has been widely studied to compress
+and accelerate the models on resource-constrained environments. It can be gen-
+erally categorized into unstructured fine-grained sparsity that zeroes out multiple
+individual weights distributed across the neural network, and structured coarse-
+grained sparsity which prunes blocks of sub-networks of a neural network. Fine-
+grained sparsity can achieve a high compression ratio but is not hardware friendly
+and hence receives limited speed gains. On the other hand, coarse-grained sparsity
+cannot concurrently achieve both apparent acceleration on modern GPUs and de-
+cent performance.
 
-N:M sparsity is fine-grained structured network, which can maintain the advantages of both unstructured fine-grained sparsity and structured coarse-grained sparsity simultaneously.
+N:M fine-grained structured sparse network, which can maintain the advantages of
+both unstructured fine-grained sparsity and structured coarse-grained sparsity si-
+multaneously on specifically designed GPUs.
 
-Thus, latest NVIDIA Ampere design for 2:4 sparsity, this paper discuss a more general form of N:M sparse networks.
+Latest NVIDIA Ampere design for 2:4 sparsity, this paper discuss a more general form of N:M sparse networks.
 
 
 ![alt text](NM.png)
@@ -63,6 +73,27 @@ class Sparse(autograd.Function):
         return grad_output + ctx.decay * (1-ctx.mask) * weight, None, None
 
 ```
+
+```python
+
+class SparseConv(nn.Conv2d):
+    """" implement N:M sparse convolution layer """
+    
+    def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros', N=2, M=4, **kwargs):
+        self.N = N
+        self.M = M
+        super(SparseConv, self).__init__(in_channels, out_channels, kernel_size, stride, padding, dilation, groups, bias, padding_mode, **kwargs)
+
+
+    def get_sparse_weights(self):
+
+        return Sparse.apply(self.weight, self.N, self.M)
+
+
+```
+
+
+
 ## Experiments
 
 #### Image Classification on ImageNet 
