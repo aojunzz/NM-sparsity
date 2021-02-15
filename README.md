@@ -87,6 +87,13 @@ class SparseConv(nn.Conv2d):
 
         return Sparse.apply(self.weight, self.N, self.M)
 
+    def forward(self, x):
+
+        w = self.get_sparse_weights()
+        x = F.conv2d(
+            x, w, self.bias, self.stride, self.padding, self.dilation, self.groups
+        )
+        return x
 
 ```
 
