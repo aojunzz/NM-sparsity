@@ -3,11 +3,8 @@
 
 ## Why N:M sparsity?
 
-Sparsity in Deep Neural Networks (DNNs) has been widely studied to compress
-and accelerate the models on resource-constrained environments. It can be generally categorized into unstructured fine-grained sparsity that zeroes out multiple
-individual weights distributed across the neural network, and structured coarse-
-grained sparsity which prunes blocks of a neural network. Fine-grained sparsity can achieve a high compression ratio but is not hardware friendly
-and hence receives limited speed gains. On the other hand, coarse-grained sparsity cannot concurrently achieve both acceleration on modern GPUs and maintain performance.
+Sparsity in Deep Neural Networks (DNNs) has been widely studied to compress　and accelerate the models on resource-constrained environments. 
+It can be generally categorized into unstructured fine-grained sparsity that zeroes out multiple　individual weights distributed across the neural network, and structured coarse-grained sparsity which prunes blocks of a neural network. Fine-grained sparsity can achieve a high compression ratio but is not hardware friendly　and hence receives limited speed gains. On the other hand, coarse-grained sparsity cannot concurrently achieve both acceleration on modern GPUs and maintain performance.
 
 **N:M fine-grained structured** sparse network, which can maintain the advantages of
 both unstructured fine-grained sparsity and structured coarse-grained sparsity simultaneously on specifically designed GPUs.
@@ -36,7 +33,7 @@ SR-STE can achieve **comparable or even better** results with **negligible extra
 ![alt text](sr-ste.png)
 
 
-the implementation details are shown as follows(in https://github.com/NM-sparsity/NM-sparsity/blob/main/devkit/sparse_ops/sparse_ops.py):
+the implementation details are shown as follows(https://github.com/NM-sparsity/NM-sparsity/blob/main/devkit/sparse_ops/sparse_ops.py):
 
 ```python
 
