@@ -116,7 +116,7 @@ class SparseConv(nn.Conv2d):
  [language model](https://github.com/anonymous-NM-sparsity/NM-sparsity/tree/main/classification) 
 
 
-## Citing 
+## Citation
 
 If you find NM-sparsity and SR-STE useful in your research, please consider citing:
 
