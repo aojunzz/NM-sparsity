@@ -10,6 +10,8 @@ It can be generally categorized into unstructured fine-grained sparsity that zer
 both unstructured fine-grained sparsity and structured coarse-grained sparsity simultaneously on specifically designed GPUs.
 
 
+## Clarify
+
 
 
 ![alt text](NM.png)
