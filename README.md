@@ -12,8 +12,7 @@ both unstructured fine-grained sparsity and structured coarse-grained sparsity s
 
 ## Clarify
 
-The Nvidia [ASP](https://github.com/NVIDIA/apex/tree/e2083df5eb96643c61613b9df48dd4eea6b07690/apex/contrib/sparsity) prune along channel dimension, our original method prune alone kernel dimension.
-
+The Nvidia [ASP](https://github.com/NVIDIA/apex/tree/e2083df5eb96643c61613b9df48dd4eea6b07690/apex/contrib/sparsity) prune along channel dimensions, our original method prune alone kernel dimensions. [Model Zoo](https://github.com/NM-sparsity/NM-sparsity/tree/main/classification)
 
 ![alt text](NM.png)
 

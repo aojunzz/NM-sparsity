@@ -13,6 +13,17 @@
 
 * ./train_val.sh ./configs/config_resnet50_2:4.yaml
 
+
+# Converting the the **NCHW** format in Pytorch to **NHWC** in ASP
+
+|     Model    | Sparse Pattern |    Top1 |         Top5  |   Download |
+| ------------ | --- | ---------------|----------|---- |
+| ResNet50 |  2:4 | 77.0 |--|[Google Drive](https://drive.google.com/file/d/15uBFc7-7PEpLQg6ZCUnXXVMDOSlCddsx/view?usp=s
+haring)| N |
+| ResNet50 |  4:8 | 77.4 |--|[Google Drive](https://drive.google.com/file/d/1PvMsSZJa6ZW1Bva7FfH9zf8ftIt1pYmf/view?usp=s
+haring)| N |
+
+
 # Results and Model Zoo
 
 |     Model    | Sparse Pattern |    Top1 |         Top5  |   Download |
