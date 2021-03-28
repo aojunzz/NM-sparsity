@@ -18,10 +18,8 @@
 
 |     Model    | Sparse Pattern |    Top1 |         Top5  |   Download |
 | ------------ | --- | ---------------|----------|---- |
-| ResNet50 |  2:4 | 77.1 |--|[Google Drive](https://drive.google.com/file/d/15uBFc7-7PEpLQg6ZCUnXXVMDOSlCddsx/view?usp=s
-haring)|
-| ResNet50 |  4:8 | 77.4 |--|[Google Drive](https://drive.google.com/file/d/1PvMsSZJa6ZW1Bva7FfH9zf8ftIt1pYmf/view?usp=s
-haring)|
+| ResNet50 |  2:4 | 77.1 |--|[Google Drive](https://drive.google.com/file/d/15uBFc7-7PEpLQg6ZCUnXXVMDOSlCddsx/view)|
+| ResNet50 |  4:8 | 77.4 |--|[Google Drive](https://drive.google.com/file/d/15uBFc7-7PEpLQg6ZCUnXXVMDOSlCddsx/view)|
 
 
 # Results and Model Zoo
