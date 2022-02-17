@@ -119,7 +119,7 @@ class MpiSintel(FlowDataset):
 
 
 class FlyingChairs(FlowDataset):
-    def __init__(self, aug_params=None, split='train', root='/mnt/lustre/DATAshare/fatiger/flyingchairs/FlyingChairs_release/data'):
+    def __init__(self, aug_params=None, split='train', root='xxxxx/FlyingChairs_release/data'):
         super(FlyingChairs, self).__init__(aug_params)
 
         images = sorted(glob(osp.join(root, '*.ppm')))
