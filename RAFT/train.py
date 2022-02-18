@@ -22,6 +22,8 @@ import datasets
 
 from torch.utils.tensorboard import SummaryWriter
 
+from lr_scheduler import OneCycleLR
+
 try:
     from torch.cuda.amp import GradScaler
 except:
@@ -83,7 +85,7 @@ def fetch_optimizer(args, model):
     """ Create the optimizer and learning rate scheduler """
     optimizer = optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.wdecay, eps=args.epsilon)
 
-    scheduler = optim.lr_scheduler.OneCycleLR(optimizer, args.lr, args.num_steps+100,
+    scheduler = OneCycleLR(optimizer, args.lr, args.num_steps+100,
         pct_start=0.05, cycle_momentum=False, anneal_strategy='linear')
 
     return optimizer, scheduler
@@ -103,13 +105,13 @@ class Logger:
         metrics_str = ("{:10.4f}, "*len(metrics_data)).format(*metrics_data)
         
         # print the training status
-        print(training_str + metrics_str)
+        print(training_str+metrics_str)
 
-        if self.writer is None:
-            self.writer = SummaryWriter()
+        #if self.writer is None:
+        #    self.writer = SummaryWriter()
 
         for k in self.running_loss:
-            self.writer.add_scalar(k, self.running_loss[k]/SUM_FREQ, self.total_steps)
+            #self.writer.add_scalar(k, self.running_loss[k]/SUM_FREQ, self.total_steps)
             self.running_loss[k] = 0.0
 
     def push(self, metrics):
@@ -198,7 +200,7 @@ def train(args):
                     elif val_dataset == 'kitti':
                         results.update(evaluate.validate_kitti(model.module))
 
-                logger.write_dict(results)
+                #logger.write_dict(results)
                 
                 model.train()
                 if args.stage != 'chairs':
@@ -210,7 +212,7 @@ def train(args):
                 should_keep_training = False
                 break
 
-    logger.close()
+    #logger.close()
     PATH = 'checkpoints/%s.pth' % args.name
     torch.save(model.state_dict(), PATH)
 
