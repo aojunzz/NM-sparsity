@@ -34,7 +34,7 @@ class Sparse(autograd.Function):
         weight, = ctx.saved_tensors
         return grad_output + ctx.decay * (1-ctx.mask) * weight, None, None
 class Sparse_NHWC(autograd.Function):
-    """" Prune the unimprotant edges for the forwards phase but pass the gradient to dense weight using STE in the backwards phase"""
+    """" Prune the unimprotant edges for the forwards phase but pass the gradient to dense weight using SR-STE in the backwards phase"""
 
     @staticmethod
     def forward(ctx, weight, N, M, decay = 0.0002):
