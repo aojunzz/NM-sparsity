@@ -104,7 +104,7 @@ class SparseLinear(nn.Linear):
     def forward(self, x):
 
         w = self.get_sparse_weights()
-        x = F.linear(x, w)
+        x = F.linear(x, w, self.bias)
         return x
 
 
